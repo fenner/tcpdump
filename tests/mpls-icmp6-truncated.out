@@ -1,0 +1,4 @@
+    1  16:44:34.202391 MPLS (label 16070, exp 0, [S], ttl 255)
+	IP (tos 0x0, ttl 138, id 32770, offset 0, flags [DF, rsvd], proto ICMPv6 (58), length 30, options (unknown 159 [bad length 252]), bad cksum 201 (->3d9e)!)
+    22.254.0.251 > 1.4.252.251: ICMP6, unknown icmp6 type (0), length 6
+	0x0000:  0001 2004 8002

@@ -714,3 +714,6 @@ arista-ether-ev          arista_ether.pcap        arista_ether-ev.out      -ev
 
 # TIPC length field test
 huge-tipc-messages	huge-tipc-messages.pcap	huge-tipc-messages.out
+
+# Fuzzed: ICMPv6 inside IP inside MPLS, truncated at the wrong spot
+mpls-icmp6-truncated	mpls-icmp6-truncated.pcap	mpls-icmp6-truncated.out	-v

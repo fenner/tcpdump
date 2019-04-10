@@ -1051,7 +1051,7 @@ icmp6_print(netdissect_options *ndo,
 	if (ndo->ndo_vflag && !fragmented) {
 		uint16_t sum, udp_sum;
 
-		if (ND_TTEST_LEN(bp, length)) {
+		if (ND_TTEST_LEN(bp, length) && ND_TTEST_SIZE(ip)) {
 			ND_TCHECK_2(dp->icmp6_cksum);
 			udp_sum = GET_BE_U_2(dp->icmp6_cksum);
 			sum = icmp6_cksum(ndo, ip, dp, length);
