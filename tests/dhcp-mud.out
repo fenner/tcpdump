@@ -16,7 +16,7 @@
 	      Subnet-Mask (1), Classless-Static-Route (121), Static-Route (33), Default-Gateway (3)
 	      Domain-Name-Server (6), Hostname (12), Domain-Name (15), BR (28)
 	      NTP (42), Lease-Time (51), Server-ID (54), RN (58)
-	      RB (59), POSIX-TZ (100), TZ-Name (101), Unknown (119)
+	      RB (59), POSIX-TZ (100), TZ-Name (101), Domain-Search (119)
     2  12:28:41.318491 IP (tos 0x0, ttl 64, id 10305, offset 0, flags [DF], proto UDP (17), length 338)
     62.12.173.114.67 > 62.12.173.121.67: [udp sum ok] BOOTP/DHCP, Reply, length 310, hops 1, xid 0x68c4847, Flags [none] (0x0000)
 	  Client-IP 62.12.173.123

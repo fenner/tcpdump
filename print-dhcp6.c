@@ -568,7 +568,7 @@ dhcp6opt_print(netdissect_options *ndo,
 			tp = (const u_char *)(dh6o + 1);
 			while (tp < cp + sizeof(*dh6o) + optlen) {
 				ND_PRINT(" ");
-				if ((tp = fqdn_print(ndo, tp, cp + sizeof(*dh6o) + optlen)) == NULL)
+				if ((tp = fqdn_print2(ndo, tp, NULL, cp + sizeof(*dh6o) + optlen)) == NULL)
 					goto trunc;
 			}
 			ND_PRINT(")");

@@ -215,6 +215,8 @@ struct bootp {
 #define	TAG_NETINFO_PARENT	((uint8_t) 112)
 #define	TAG_NETINFO_PARENT_TAG	((uint8_t) 113)
 #define	TAG_URL			((uint8_t) 114)
+/* RFC 3397 */
+#define	TAG_DOMAIN_SEARCH	((uint8_t) 119)
 #define TAG_MUDURL              ((uint8_t) 161)
 
 /* DHCP Message types (values for TAG_DHCP_MESSAGE option) */
@@ -520,6 +522,7 @@ static const struct tok tag2str[] = {
 	{ TAG_NETINFO_PARENT,	"iNI" },
 	{ TAG_NETINFO_PARENT_TAG, "aNITAG" },
 	{ TAG_URL,		"aURL" },
+	{ TAG_DOMAIN_SEARCH,	"$Domain-Search" },
 	{ TAG_MUDURL,           "aMUD-URL" },
 	{ 0, NULL }
 };
@@ -999,6 +1002,20 @@ rfc1048_print(netdissect_options *ndo,
 				break;
 			    }
 
+			case TAG_DOMAIN_SEARCH:
+			    {
+				const u_char *np = bp;
+				const u_char *ep = bp + len;
+				while ( np && np < ep ) {
+				    np = fqdn_print2(ndo, np, bp, ep);
+				    if ( np && np < ep ) {
+					ND_PRINT( " " );
+				    }
+				}
+				bp += len;
+				len = 0;
+				break;
+			    }
 			default:
 				ND_PRINT("[unknown special tag %u, size %u]",
 					  tag, len);

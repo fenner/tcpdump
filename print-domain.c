@@ -155,10 +155,11 @@ labellen(netdissect_options *ndo,
 		return(i);
 }
 
-/* print a <domain-name> */
+/* print a <domain-name> with an explicit end-pointer */
 const u_char *
-fqdn_print(netdissect_options *ndo,
-          const u_char *cp, const u_char *bp)
+fqdn_print2(netdissect_options *ndo,
+	    const u_char *cp, const u_char *bp,
+	    const u_char *ep)
 {
 	u_int i, l;
 	const u_char *rp = NULL;
@@ -170,7 +171,15 @@ fqdn_print(netdissect_options *ndo,
 		return(NULL);
 	if (!ND_TTEST_1(cp))
 		return(NULL);
-	max_offset = (u_int)(cp - bp);
+	if (bp) {
+		max_offset = (u_int)(cp - bp);
+	} else {
+		/*
+		 * compression not supported in
+		 * this context (e.g., DHCP6)
+		 */
+		max_offset = 0;
+	}
 	i = GET_U_1(cp);
 	cp++;
 	if ((i & INDIR_MASK) != INDIR_MASK) {
@@ -179,7 +188,7 @@ fqdn_print(netdissect_options *ndo,
 	}
 
 	if (i != 0)
-		while (i && cp < ndo->ndo_snapend) {
+		while (i && cp < ep) {
 			if ((i & INDIR_MASK) == INDIR_MASK) {
 				if (!compress) {
 					rp = cp + 1;
@@ -225,7 +234,7 @@ fqdn_print(netdissect_options *ndo,
 					return(NULL);
 				}
 			} else {
-				if (nd_printn(ndo, cp, l, ndo->ndo_snapend))
+				if (nd_printn(ndo, cp, l, ep))
 					return(NULL);
 			}
 
@@ -243,6 +252,14 @@ fqdn_print(netdissect_options *ndo,
 	else
 		ND_PRINT(".");
 	return (rp);
+}
+
+/* print a <domain-name> */
+const u_char *
+fqdn_print(netdissect_options *ndo,
+	   const u_char *cp, const u_char *bp)
+{
+	return fqdn_print2(ndo, cp, bp, ndo->ndo_snapend);
 }
 
 /* print a <character-string> */

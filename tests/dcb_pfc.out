@@ -7,7 +7,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
     2  05:02:46.292912 LLDP, length 87

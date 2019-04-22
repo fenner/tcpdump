@@ -305,7 +305,7 @@ dhcpv4_print(netdissect_options *ndo,
             const u_char *tp = value;
             while (tp < value + optlen) {
                 ND_PRINT(" ");
-                if ((tp = fqdn_print(ndo, tp, value + optlen)) == NULL)
+                if ((tp = fqdn_print2(ndo, tp, value, value + optlen)) == NULL)
                     return -1;
             }
         }

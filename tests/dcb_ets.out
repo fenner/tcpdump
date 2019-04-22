@@ -8,7 +8,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
     3  04:02:58.010903 LLDP, length 135
@@ -75,7 +75,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
     5  04:03:14.455118 IP (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
@@ -87,7 +87,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
     6  04:03:25.996519 IP6 (hlim 1, next-header Options (0) payload length: 76) :: > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 3 group record(s) [gaddr ff02::1:ff46:e884 to_ex { }] [gaddr ff02::2 to_ex { }] [gaddr ff02::202 to_ex { }]
@@ -100,7 +100,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
     8  04:03:26.350998 IP6 (hlim 255, next-header ICMPv6 (58) payload length: 24) :: > ff02::1:ff46:e884: [icmp6 sum ok] ICMP6, neighbor solicitation, length 24, who has fe80::a00:27ff:fe46:e884
@@ -176,7 +176,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    17  04:03:35.582218 IP6 (hlim 1, next-header Options (0) payload length: 36) fe80::a00:27ff:fe42:ba59 > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 1 group record(s) [gaddr ff02::1:ff00:0 to_ex { }]
@@ -189,7 +189,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    19  04:03:58.207517 LLDP, length 135
@@ -256,7 +256,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    21  04:04:15.044685 IP6 (hlim 1, next-header Options (0) payload length: 76) :: > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 3 group record(s) [gaddr ff02::1:ff46:e884 to_ex { }] [gaddr ff02::2 to_ex { }] [gaddr ff02::202 to_ex { }]
@@ -269,7 +269,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    23  04:04:15.831624 IP6 (hlim 255, next-header ICMPv6 (58) payload length: 24) :: > ff02::1:ff46:e884: [icmp6 sum ok] ICMP6, neighbor solicitation, length 24, who has fe80::a00:27ff:fe46:e884
@@ -286,7 +286,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    27  04:04:18.745823 IP6 (hlim 1, next-header Options (0) payload length: 36) fe80::a00:27ff:fe46:e884 > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 1 group record(s) [gaddr ff02::1:ff00:0 to_ex { }]
@@ -409,7 +409,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    31  04:04:28.323921 LLDP, length 135
@@ -531,7 +531,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    34  04:04:51.930199 IP (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
@@ -543,7 +543,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    35  04:04:53.780244 LLDP, length 135
@@ -777,7 +777,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    42  04:05:04.283851 IP6 (hlim 255, next-header ICMPv6 (58) payload length: 16) fe80::a00:27ff:fe46:e884 > ff02::2: [icmp6 sum ok] ICMP6, router solicitation, length 16
@@ -794,7 +794,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    46  04:05:20.296407 IP (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
@@ -806,7 +806,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    47  04:05:23.875146 LLDP, length 135
@@ -1038,7 +1038,7 @@
 	    Parameter-Request (55), length 17: 
 	      Subnet-Mask (1), BR (28), Time-Zone (2), Classless-Static-Route (121)
 	      Domain-Name (15), Domain-Name-Server (6), Hostname (12), YD (40)
-	      YS (41), NTP (42), MTU (26), Unknown (119)
+	      YS (41), NTP (42), MTU (26), Domain-Search (119)
 	      Default-Gateway (3), Classless-Static-Route (121), Classless-Static-Route-Microsoft (249), Unknown (252)
 	      NTP (42)
    52  04:05:54.004592 LLDP, length 135
