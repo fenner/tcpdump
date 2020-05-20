@@ -1,0 +1,200 @@
+    1  18:36:58.569565 IP6 (hlim 1, next-header Options (0) payload length: 56) fe80::54de:9fff:fe51:611d > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 2 group record(s) [gaddr ff02::1:ff00:2 to_ex, 0 source(s)] [gaddr ff02::1:ff51:611d to_ex, 0 source(s)]
+    2  18:36:58.569609 IP6 (hlim 255, next-header ICMPv6 (58) payload length: 16) fe80::54de:9fff:fe51:611d > ff02::2: [icmp6 sum ok] ICMP6, router solicitation, length 16
+	  source link-address option (1), length 8 (1): 56:de:9f:51:61:1d
+    3  18:36:58.825522 IP6 (hlim 1, next-header Options (0) payload length: 76) fe80::54de:9fff:fe51:611d > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 3 group record(s) [gaddr ff02::1:ff00:0 to_ex, 0 source(s)] [gaddr ff05::2 to_ex, 0 source(s)] [gaddr ff02::2 to_ex, 0 source(s)]
+    4  18:36:58.857660 IP6 (hlim 1, next-header Options (0) payload length: 76) :: > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 3 group record(s) [gaddr ff02::1:ff00:0 to_ex, 0 source(s)] [gaddr ff05::2 to_ex, 0 source(s)] [gaddr ff02::2 to_ex, 0 source(s)]
+    5  18:36:58.985544 IP6 (hlim 1, next-header Options (0) payload length: 116) fe80::2:ff:fe01:0 > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 5 group record(s) [gaddr ff02::1:ff00:0 to_ex, 0 source(s)] [gaddr ff05::2 to_ex, 0 source(s)] [gaddr ff02::2 to_ex, 0 source(s)] [gaddr ff02::1:ff00:1 to_ex, 0 source(s)] [gaddr ff02::1:ff01:0 to_ex, 0 source(s)]
+    6  18:36:59.049489 IP6 (hlim 1, next-header Options (0) payload length: 116) fe80::2:ff:fe01:0 > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 5 group record(s) [gaddr ff02::1:ff00:0 to_ex, 0 source(s)] [gaddr ff05::2 to_ex, 0 source(s)] [gaddr ff02::2 to_ex, 0 source(s)] [gaddr ff02::1:ff00:1 to_ex, 0 source(s)] [gaddr ff02::1:ff01:0 to_ex, 0 source(s)]
+    7  18:36:59.145506 IP6 (hlim 1, next-header Options (0) payload length: 76) fe80::2:ff:fe01:0 > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 3 group record(s) [gaddr ff02::1:ff00:0 to_ex, 0 source(s)] [gaddr ff05::2 to_ex, 0 source(s)] [gaddr ff02::2 to_ex, 0 source(s)]
+    8  18:36:59.150326 IP6 (hlim 255, next-header ICMPv6 (58) payload length: 32) 2000:0:0:40::2 > ff02::1:ff00:1: [icmp6 sum ok] ICMP6, neighbor solicitation, length 32, who has 2000:0:0:40::1
+	  source link-address option (1), length 8 (1): 56:de:9f:51:61:1d
+    9  18:36:59.150417 IP6 (hlim 255, next-header ICMPv6 (58) payload length: 32) 2000:0:0:40::1 > 2000:0:0:40::2: [icmp6 sum ok] ICMP6, neighbor advertisement, length 32, tgt is 2000:0:0:40::1, Flags [router, solicited, override]
+	  destination link-address option (2), length 8 (1): 02:02:00:01:00:00
+   10  18:36:59.150482 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 40) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [S], cksum 0x296e (correct), seq 2410491384, win 28800, options [mss 1440,sackOK,TS val 1255920257 ecr 0,nop,wscale 9], length 0
+   11  18:36:59.150520 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 40) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [S.], cksum 0x89ef (correct), seq 365391161, ack 2410491385, win 28560, options [mss 1440,sackOK,TS val 1255920257 ecr 1255920257,nop,wscale 9], length 0
+   12  18:36:59.150565 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 32) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [.], cksum 0x2801 (correct), ack 1, win 57, options [nop,nop,TS val 1255920257 ecr 1255920257], length 0
+   13  18:36:59.171788 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 79) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xf4e0 (correct), seq 1:48, ack 1, win 57, options [nop,nop,TS val 1255920262 ecr 1255920257], length 47: BGP
+	Open Message (1), length: 47
+	  Version 4, my AS 100, Holdtime 0s, ID 1.0.1.1
+	  Optional parameters, length: 18
+	    Option Capabilities Advertisement (2), length: 16
+	      Route Refresh (2), length: 0
+	      Enhanced Route Refresh (70), length: 0
+	      Multiprotocol Extensions (1), length: 4
+		AFI IPv6 (2), SAFI Unicast (1)
+	      Multiprotocol Extensions (1), length: 4
+		AFI IPv4 (1), SAFI Unicast (1)
+   14  18:36:59.171842 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x27c9 (correct), ack 48, win 56, options [nop,nop,TS val 1255920262 ecr 1255920262], length 0
+   15  18:36:59.241491 IP6 (hlim 1, next-header Options (0) payload length: 76) fe80::54de:9fff:fe51:611d > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 3 group record(s) [gaddr ff02::1:ff00:0 to_ex, 0 source(s)] [gaddr ff05::2 to_ex, 0 source(s)] [gaddr ff02::2 to_ex, 0 source(s)]
+   16  18:36:59.241544 IP6 (hlim 1, next-header Options (0) payload length: 116) fe80::54de:9fff:fe51:611d > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 5 group record(s) [gaddr ff02::1:ff00:0 to_ex, 0 source(s)] [gaddr ff05::2 to_ex, 0 source(s)] [gaddr ff02::2 to_ex, 0 source(s)] [gaddr ff02::1:ff00:2 to_ex, 0 source(s)] [gaddr ff02::1:ff51:611d to_ex, 0 source(s)]
+   17  18:36:59.251281 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 99) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [P.], cksum 0x2833 (correct), seq 1:68, ack 48, win 56, options [nop,nop,TS val 1255920282 ecr 1255920262], length 67: BGP
+	Open Message (1), length: 67
+	  Version 4, my AS 101, Holdtime 180s, ID 0.0.0.1
+	  Optional parameters, length: 38
+	    Option Capabilities Advertisement (2), length: 36
+	      Route Refresh (2), length: 0
+	      Enhanced Route Refresh (70), length: 0
+	      32-Bit AS Number (65), length: 4
+		 4 Byte AS 101
+	      Multiprotocol Extensions (1), length: 4
+		AFI IPv4 (1), SAFI Unicast (1)
+	      Multiprotocol Extensions (1), length: 4
+		AFI IPv6 (2), SAFI Unicast (1)
+	      Graceful Restart (64), length: 2
+		Restart Flags: [R], Restart Time 300s
+	      Multiple Paths (69), length: 8
+		AFI IPv4 (1), SAFI Unicast (1), Send/Receive: Receive
+		AFI IPv6 (2), SAFI Unicast (1), Send/Receive: Receive
+   18  18:36:59.251345 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 32) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [.], cksum 0x275d (correct), ack 68, win 57, options [nop,nop,TS val 1255920282 ecr 1255920282], length 0
+   19  18:36:59.251381 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 51) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [P.], cksum 0x2330 (correct), seq 68:87, ack 48, win 56, options [nop,nop,TS val 1255920282 ecr 1255920282], length 19: BGP
+	Keepalive Message (4), length: 19
+   20  18:36:59.251401 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 32) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [.], cksum 0x274a (correct), ack 87, win 57, options [nop,nop,TS val 1255920282 ecr 1255920282], length 0
+   21  18:36:59.251460 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 51) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0x231c (correct), seq 48:67, ack 87, win 57, options [nop,nop,TS val 1255920282 ecr 1255920282], length 19: BGP
+	Keepalive Message (4), length: 19
+   22  18:36:59.251519 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x2738 (correct), ack 67, win 56, options [nop,nop,TS val 1255920282 ecr 1255920282], length 0
+   23  18:36:59.547992 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 77) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xc282 (correct), seq 67:112, ack 87, win 57, options [nop,nop,TS val 1255920356 ecr 1255920282], length 45: BGP
+	Update Message (2), length: 45
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 4, Flags [T]: 100 
+	  Next Hop (3), length: 4, Flags [T]: 1.2.1.1
+	  Updated routes:
+	    1.1.1.0/24
+   24  18:36:59.548063 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x2677 (correct), ack 112, win 56, options [nop,nop,TS val 1255920356 ecr 1255920356], length 0
+   25  18:36:59.565451 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 77) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xc106 (correct), seq 112:157, ack 87, win 57, options [nop,nop,TS val 1255920360 ecr 1255920356], length 45: BGP
+	Update Message (2), length: 45
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 4, Flags [T]: 100 
+	  Next Hop (3), length: 4, Flags [T]: 1.2.2.1
+	  Updated routes:
+	    1.1.2.0/24
+   26  18:36:59.565508 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x2641 (correct), ack 157, win 56, options [nop,nop,TS val 1255920361 ecr 1255920360], length 0
+   27  18:36:59.582360 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 77) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xbfce (correct), seq 157:202, ack 87, win 57, options [nop,nop,TS val 1255920365 ecr 1255920361], length 45: BGP
+	Update Message (2), length: 45
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 4, Flags [T]: 100 
+	  Next Hop (3), length: 4, Flags [T]: 1.2.3.1
+	  Updated routes:
+	    1.1.3.0/24
+   28  18:36:59.582438 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x260b (correct), ack 202, win 56, options [nop,nop,TS val 1255920365 ecr 1255920365], length 0
+   29  18:36:59.599551 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 112) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xd477 (correct), seq 202:282, ack 87, win 57, options [nop,nop,TS val 1255920369 ecr 1255920365], length 80: BGP
+	Update Message (2), length: 80
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 4, Flags [T]: 100 
+	  Next Hop (3), length: 4, Flags [T]: 0.0.0.0
+	  Multi-Protocol Reach NLRI (14), length: 36, Flags [O]: 
+	    AFI: IPv6 (2), SAFI: Unicast (1)
+	    nexthop: face:1::112, nh-length: 16, no SNPA
+	      beef:1::/112
+   30  18:36:59.599629 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x25b3 (correct), ack 282, win 56, options [nop,nop,TS val 1255920369 ecr 1255920369], length 0
+   31  18:36:59.616283 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 112) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xd41d (correct), seq 282:362, ack 87, win 57, options [nop,nop,TS val 1255920373 ecr 1255920369], length 80: BGP
+	Update Message (2), length: 80
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 4, Flags [T]: 100 
+	  Next Hop (3), length: 4, Flags [T]: 0.0.0.0
+	  Multi-Protocol Reach NLRI (14), length: 36, Flags [O]: 
+	    AFI: IPv6 (2), SAFI: Unicast (1)
+	    nexthop: face:2::112, nh-length: 16, no SNPA
+	      beef:2::/112
+   32  18:36:59.616360 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x255b (correct), ack 362, win 56, options [nop,nop,TS val 1255920373 ecr 1255920373], length 0
+   33  18:36:59.632042 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 112) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xd3c3 (correct), seq 362:442, ack 87, win 57, options [nop,nop,TS val 1255920377 ecr 1255920373], length 80: BGP
+	Update Message (2), length: 80
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 4, Flags [T]: 100 
+	  Next Hop (3), length: 4, Flags [T]: 0.0.0.0
+	  Multi-Protocol Reach NLRI (14), length: 36, Flags [O]: 
+	    AFI: IPv6 (2), SAFI: Unicast (1)
+	    nexthop: face:3::112, nh-length: 16, no SNPA
+	      beef:3::/112
+   34  18:36:59.632117 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x2503 (correct), ack 442, win 56, options [nop,nop,TS val 1255920377 ecr 1255920377], length 0
+   35  18:37:01.025744 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 55) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0x1c6e (correct), seq 442:465, ack 87, win 57, options [nop,nop,TS val 1255920726 ecr 1255920377], length 23: BGP
+	Route Refresh Message (5), length: 23
+	  AFI IPv4 (1), SAFI Unicast (1), Subtype BoRR (1)
+   36  18:37:01.025830 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x2232 (correct), ack 465, win 56, options [nop,nop,TS val 1255920726 ecr 1255920726], length 0
+   37  18:37:01.043362 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 55) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0x19f6 (correct), seq 465:488, ack 87, win 57, options [nop,nop,TS val 1255920730 ecr 1255920726], length 23: BGP
+	Route Refresh Message (5), length: 23
+	  AFI IPv6 (2), SAFI Unicast (1), Subtype BoRR (1)
+   38  18:37:01.043425 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x2213 (correct), ack 488, win 56, options [nop,nop,TS val 1255920730 ecr 1255920730], length 0
+   39  18:37:01.942919 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 77) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xbcc6 (correct), seq 488:533, ack 87, win 57, options [nop,nop,TS val 1255920955 ecr 1255920730], length 45: BGP
+	Update Message (2), length: 45
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 4, Flags [T]: 100 
+	  Next Hop (3), length: 4, Flags [T]: 1.2.1.1
+	  Updated routes:
+	    1.1.1.0/24
+   40  18:37:01.942989 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x2024 (correct), ack 533, win 56, options [nop,nop,TS val 1255920955 ecr 1255920955], length 0
+   41  18:37:01.960748 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 112) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xaa30 (correct), seq 533:613, ack 87, win 57, options [nop,nop,TS val 1255920959 ecr 1255920955], length 80: BGP
+	Update Message (2), length: 80
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 4, Flags [T]: 100 
+	  Next Hop (3), length: 4, Flags [T]: 0.0.0.0
+	  Multi-Protocol Reach NLRI (14), length: 36, Flags [O]: 
+	    AFI: IPv6 (2), SAFI: Unicast (1)
+	    nexthop: 2000:0:0:40::2, nh-length: 16, no SNPA
+	      beef:1::/112
+   42  18:37:01.960812 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x1fcc (correct), ack 613, win 56, options [nop,nop,TS val 1255920959 ecr 1255920959], length 0
+   43  18:37:03.330955 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 79) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xb69b (correct), seq 613:660, ack 87, win 57, options [nop,nop,TS val 1255921302 ecr 1255920959], length 47: BGP
+	Update Message (2), length: 47
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 6, Flags [T]: 100 102 
+	  Next Hop (3), length: 4, Flags [T]: 1.2.2.1
+	  Updated routes:
+	    1.1.2.0/24
+   44  18:37:03.331043 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x1cef (correct), ack 660, win 56, options [nop,nop,TS val 1255921302 ecr 1255921302], length 0
+   45  18:37:03.353772 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 114) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xa48b (correct), seq 660:742, ack 87, win 57, options [nop,nop,TS val 1255921308 ecr 1255921302], length 82: BGP
+	Update Message (2), length: 82
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 6, Flags [T]: 100 102 
+	  Next Hop (3), length: 4, Flags [T]: 0.0.0.0
+	  Multi-Protocol Reach NLRI (14), length: 36, Flags [O]: 
+	    AFI: IPv6 (2), SAFI: Unicast (1)
+	    nexthop: 2000:0:0:40::2, nh-length: 16, no SNPA
+	      beef:2::/112
+   46  18:37:03.353821 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x1c91 (correct), ack 742, win 56, options [nop,nop,TS val 1255921308 ecr 1255921308], length 0
+   47  18:37:03.403563 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 77) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xb516 (correct), seq 742:787, ack 87, win 57, options [nop,nop,TS val 1255921320 ecr 1255921308], length 45: BGP
+	Update Message (2), length: 45
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 4, Flags [T]: 100 
+	  Next Hop (3), length: 4, Flags [T]: 1.2.4.1
+	  Updated routes:
+	    1.1.4.0/24
+   48  18:37:03.403643 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x1c4c (correct), ack 787, win 56, options [nop,nop,TS val 1255921320 ecr 1255921320], length 0
+   49  18:37:03.421487 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 112) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0xd459 (correct), seq 787:867, ack 87, win 57, options [nop,nop,TS val 1255921325 ecr 1255921320], length 80: BGP
+	Update Message (2), length: 80
+	  Origin (1), length: 1, Flags [T]: EGP
+	  AS Path (2), length: 4, Flags [T]: 100 
+	  Next Hop (3), length: 4, Flags [T]: 250.206.0.3
+	  Multi-Protocol Reach NLRI (14), length: 36, Flags [O]: 
+	    AFI: IPv6 (2), SAFI: Unicast (1)
+	    nexthop: 2000:0:0:40::2, nh-length: 16, no SNPA
+	      beef:4::/112
+   50  18:37:03.421542 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x1bf2 (correct), ack 867, win 56, options [nop,nop,TS val 1255921325 ecr 1255921325], length 0
+   51  18:37:04.812889 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 55) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0x135e (correct), seq 867:890, ack 87, win 57, options [nop,nop,TS val 1255921672 ecr 1255921325], length 23: BGP
+	Route Refresh Message (5), length: 23
+	  AFI IPv4 (1), SAFI Unicast (1), Subtype EoRR (2)
+   52  18:37:04.812987 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x1925 (correct), ack 890, win 56, options [nop,nop,TS val 1255921672 ecr 1255921672], length 0
+   53  18:37:04.830054 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 55) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0x10e7 (correct), seq 890:913, ack 87, win 57, options [nop,nop,TS val 1255921677 ecr 1255921672], length 23: BGP
+	Route Refresh Message (5), length: 23
+	  AFI IPv6 (2), SAFI Unicast (1), Subtype EoRR (2)
+   54  18:37:04.830125 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x1904 (correct), ack 913, win 56, options [nop,nop,TS val 1255921677 ecr 1255921677], length 0
+   55  18:37:06.556006 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 55) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0x101d (correct), seq 913:936, ack 87, win 57, options [nop,nop,TS val 1255922108 ecr 1255921677], length 23: BGP
+	Route Refresh Message (5), length: 23
+	  AFI IPv4 (1), SAFI Unicast (1), Subtype BoRR (1)
+   56  18:37:06.556095 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x158f (correct), ack 936, win 56, options [nop,nop,TS val 1255922108 ecr 1255922108], length 0
+   57  18:37:06.571356 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 55) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0x0d53 (correct), seq 936:959, ack 87, win 57, options [nop,nop,TS val 1255922112 ecr 1255922108], length 23: BGP
+	Route Refresh Message (5), length: 23
+	  AFI IPv6 (2), SAFI Unicast (1), Subtype BoRR (1)
+   58  18:37:06.571430 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x1570 (correct), ack 959, win 56, options [nop,nop,TS val 1255922112 ecr 1255922112], length 0
+   59  18:37:07.086480 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 55) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0x0db6 (correct), seq 959:982, ack 87, win 57, options [nop,nop,TS val 1255922241 ecr 1255922112], length 23: BGP
+	Route Refresh Message (5), length: 23
+	  AFI IPv4 (1), SAFI Unicast (1), Subtype EoRR (2)
+   60  18:37:07.086546 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x1457 (correct), ack 982, win 56, options [nop,nop,TS val 1255922241 ecr 1255922241], length 0
+   61  18:37:07.103302 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 55) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [P.], cksum 0x0c1a (correct), seq 982:1005, ack 87, win 57, options [nop,nop,TS val 1255922245 ecr 1255922241], length 23: BGP
+	Route Refresh Message (5), length: 23
+	  AFI IPv6 (2), SAFI Unicast (1), Subtype EoRR (2)
+   62  18:37:07.103379 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [.], cksum 0x1438 (correct), ack 1005, win 56, options [nop,nop,TS val 1255922245 ecr 1255922245], length 0
+   63  18:37:08.893325 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 53) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [P.], cksum 0x0c41 (correct), seq 87:108, ack 1005, win 56, options [nop,nop,TS val 1255922692 ecr 1255922245], length 21: BGP
+	Notification Message (3), length: 21, Cease (6), subcode Peer Unconfigured (3)
+   64  18:37:08.896983 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [F.], cksum 0x1262 (correct), seq 108, ack 1005, win 56, options [nop,nop,TS val 1255922693 ecr 1255922245], length 0
+   65  18:37:08.909485 IP6 (class 0xc0, flowlabel 0xde269, hlim 255, next-header TCP (6) payload length: 32) 2000:0:0:40::1.179 > 2000:0:0:40::2.37355: Flags [F.], cksum 0x125e (correct), seq 108, ack 1005, win 56, options [nop,nop,TS val 1255922697 ecr 1255922245], length 0
+   66  18:37:08.909564 IP6 (flowlabel 0x42aed, hlim 64, next-header TCP (6) payload length: 44) 2000:0:0:40::2.37355 > 2000:0:0:40::1.179: Flags [.], cksum 0xd3ac (correct), ack 109, win 57, options [nop,nop,TS val 1255922697 ecr 1255922692,nop,nop,sack 1 {108:109}], length 0
+   67  18:37:11.369536 IP6 (hlim 1, next-header Options (0) payload length: 76) fe80::54de:9fff:fe51:611d > ff02::16: HBH (rtalert: 0x0000) (padn) [icmp6 sum ok] ICMP6, multicast listener report v2, 3 group record(s) [gaddr ff02::1:ff00:0 to_in, 0 source(s)] [gaddr ff05::2 to_in, 0 source(s)] [gaddr ff02::2 to_in, 0 source(s)]

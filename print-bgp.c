@@ -106,7 +106,7 @@ struct bgp_route_refresh {
     nd_uint16_t len;
     nd_uint8_t  type;   /* No padding after this; afi is, in fact, not aligned */
     nd_uint16_t afi;
-    nd_uint8_t  res;
+    nd_uint8_t  subtype;	/* RFC7313 */
     nd_uint8_t  safi;
 };
 #define BGP_ROUTE_REFRESH_SIZE          23
@@ -222,7 +222,7 @@ static const struct tok bgp_opt_values[] = {
 #define BGP_CAPCODE_DYN_CAP            67 /* draft-ietf-idr-dynamic-cap */
 #define BGP_CAPCODE_MULTISESS          68 /* draft-ietf-idr-bgp-multisession */
 #define BGP_CAPCODE_ADD_PATH           69 /* RFC7911 */
-#define BGP_CAPCODE_ENH_RR             70 /* draft-keyur-bgp-enhanced-route-refresh */
+#define BGP_CAPCODE_ENH_RR             70 /* RFC7313 */
 #define BGP_CAPCODE_LLGR               71 /* draft-uttaro-idr-bgp-persistence-05 */
 #define BGP_CAPCODE_RR_CISCO          128
 
@@ -250,7 +250,7 @@ static const struct tok bgp_capcode_values[] = {
 #define BGP_NOTIFY_MAJOR_HOLDTIME       4
 #define BGP_NOTIFY_MAJOR_FSM            5
 #define BGP_NOTIFY_MAJOR_CEASE          6
-#define BGP_NOTIFY_MAJOR_CAP            7
+#define BGP_NOTIFY_MAJOR_RR             7
 
 static const struct tok bgp_notify_major_values[] = {
     { BGP_NOTIFY_MAJOR_MSG,     "Message Header Error"},
@@ -259,7 +259,7 @@ static const struct tok bgp_notify_major_values[] = {
     { BGP_NOTIFY_MAJOR_HOLDTIME,"Hold Timer Expired"},
     { BGP_NOTIFY_MAJOR_FSM,     "Finite State Machine Error"},
     { BGP_NOTIFY_MAJOR_CEASE,   "Cease"},
-    { BGP_NOTIFY_MAJOR_CAP,     "Capability Message Error"},
+    { BGP_NOTIFY_MAJOR_RR,      "Route Refresh Message Error"},
     { 0, NULL}
 };
 
@@ -321,6 +321,15 @@ static const struct tok bgp_notify_minor_fsm_values[] = {
     { 0, NULL }
 };
 
+static const struct tok bgp_notify_minor_rr_values[] = {
+    { 1,			"Invalid Length" },
+    { 0, NULL }
+};
+
+/*
+ * The major number for capability notification has
+ * not been assigned by IANA - commenting this out
+ * until an assignment is available.
 static const struct tok bgp_notify_minor_cap_values[] = {
     { 1,                        "Invalid Action Value" },
     { 2,                        "Invalid Capability Length" },
@@ -328,6 +337,7 @@ static const struct tok bgp_notify_minor_cap_values[] = {
     { 4,                        "Unsupported Capability Code" },
     { 0, NULL }
 };
+ */
 
 static const struct tok bgp_origin_values[] = {
     { 0,                        "IGP"},
@@ -555,6 +565,16 @@ static const struct tok bgp_add_path_recvsend[] = {
     { 2, "Send" },
     { 3, "Both" },
     { 0, NULL },
+};
+
+/* Enhanced Route Refresh (RFC7313) subtypes */
+#define	BGP_ENH_RR_SUBTYPE_BORR	1	/* Beginning of route refresh */
+#define	BGP_ENH_RR_SUBTYPE_EORR	2	/* End of route refresh */
+
+static const struct tok bgp_enh_rr_subtypes[] = {
+    { BGP_ENH_RR_SUBTYPE_BORR,	"BoRR" },
+    { BGP_ENH_RR_SUBTYPE_EORR,	"EoRR" },
+    { 0,			NULL },
 };
 
 /* allocate space for the largest possible string */
@@ -2618,6 +2638,7 @@ bgp_capabilities_print(netdissect_options *ndo,
             }
             break;
         case BGP_CAPCODE_RR:
+        case BGP_CAPCODE_ENH_RR:
         case BGP_CAPCODE_LLGR:
         case BGP_CAPCODE_RR_CISCO:
             break;
@@ -2984,12 +3005,18 @@ bgp_notification_print(netdissect_options *ndo,
                           bgpn_minor),
                   bgpn_minor);
         break;
+	/*
+	 * This value has not been assigned by IANA, and the value
+	 * that was being used in the code has been assigned by IANA
+	 * to Route Refresh, so commenting this out until a new
+	 * assignment is made.
     case BGP_NOTIFY_MAJOR_CAP:
         ND_PRINT(" subcode %s (%u)",
                   tok2str(bgp_notify_minor_cap_values, "Unknown",
                           bgpn_minor),
                   bgpn_minor);
         break;
+	 */
     case BGP_NOTIFY_MAJOR_CEASE:
         ND_PRINT(", subcode %s (%u)",
                   tok2str(bgp_notify_minor_cease_values, "Unknown",
@@ -3042,6 +3069,12 @@ bgp_notification_print(netdissect_options *ndo,
             }
         }
         break;
+    case BGP_NOTIFY_MAJOR_RR:
+        ND_PRINT(" subcode %s (%u)",
+                  tok2str(bgp_notify_minor_rr_values, "Unknown",
+                          bgpn_minor),
+                  bgpn_minor);
+        break;
     default:
         break;
     }
@@ -3056,6 +3089,7 @@ bgp_route_refresh_print(netdissect_options *ndo,
                         const u_char *pptr, u_int len)
 {
     const struct bgp_route_refresh *bgp_route_refresh_header;
+    int subtype;
 
     ND_TCHECK_LEN(pptr, BGP_ROUTE_REFRESH_SIZE);
 
@@ -3072,6 +3106,13 @@ bgp_route_refresh_print(netdissect_options *ndo,
               tok2str(bgp_safi_values,"Unknown",
                       GET_U_1(bgp_route_refresh_header->safi)),
               GET_U_1(bgp_route_refresh_header->safi));
+
+    subtype = GET_U_1(bgp_route_refresh_header->subtype);
+    if (subtype != 0) {
+	ND_PRINT(", Subtype %s (%u)",
+		 tok2str(bgp_enh_rr_subtypes, "Unknown", subtype),
+		 subtype);
+    }
 
     if (ndo->ndo_vflag > 1) {
         ND_TCHECK_LEN(pptr, len);
