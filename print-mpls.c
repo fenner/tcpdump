@@ -41,10 +41,20 @@
 
 static const char *mpls_labelname[] = {
 /*0*/	"IPv4 explicit NULL", "router alert", "IPv6 explicit NULL",
-	"implicit NULL", "rsvd",
-/*5*/	"rsvd", "rsvd", "rsvd", "rsvd", "rsvd",
-/*10*/	"rsvd", "rsvd", "rsvd", "rsvd", "rsvd",
-/*15*/	"rsvd",
+	"implicit NULL", "special",
+/*5*/	"special", "special", "entropy label indicator", "special", "special",
+/*10*/	"special", "special", "special", "generic associated channel",
+        "OAM alert",
+/*15*/	"extension label",
+};
+
+/*
+ * https://www.iana.org/assignments/mpls-label-values/mpls-label-values.xhtml
+ */
+static const struct tok ext_special_label[] = {
+	{ 16,	"metadata label indicator" },
+	{ 17,	"metadata persent indicator" },
+	{ 0,	NULL },
 };
 
 enum mpls_packet_type {
@@ -65,21 +75,42 @@ mpls_print(netdissect_options *ndo, const u_char *bp, u_int length)
 	uint16_t label_stack_depth = 0;
 	uint8_t first;
 	enum mpls_packet_type pt = PT_UNKNOWN;
+	int extended_sp_label = 0;
 
 	ndo->ndo_protocol = "mpls";
 	p = bp;
 	nd_print_protocol_caps(ndo);
 	do {
+		uint32_t label_value;
 		if (length < sizeof(label_entry))
 			goto invalid;
 		label_entry = GET_BE_U_4(p);
+		label_value = MPLS_LABEL(label_entry);
 		ND_PRINT("%s(label %u",
 		       (label_stack_depth && ndo->ndo_vflag) ? "\n\t" : " ",
-       		       MPLS_LABEL(label_entry));
+       		       label_value);
 		label_stack_depth++;
-		if (ndo->ndo_vflag &&
-		    MPLS_LABEL(label_entry) < sizeof(mpls_labelname) / sizeof(mpls_labelname[0]))
-			ND_PRINT(" (%s)", mpls_labelname[MPLS_LABEL(label_entry)]);
+		if (ndo->ndo_vflag) {
+		    if (extended_sp_label) {
+			/*
+			 * If the previous label was the extension label,
+			 * then this label is an extended special-purpose label,
+			 * in the ext_special_label table.
+			 */
+			if (label_value <= EXTENSION_LABEL) {
+			    /*
+			     * These values are invalid for extended labels
+			     */
+			    ND_PRINT(" (invalid)");
+			}
+			const char *labelname = tok2str(ext_special_label, "", label_value);
+			if (*labelname) {
+			    ND_PRINT(" (%s)", labelname);
+			}
+		    } else if (label_value < sizeof(mpls_labelname) / sizeof(mpls_labelname[0]))
+			ND_PRINT(" (%s)", mpls_labelname[label_value]);
+		}
+		extended_sp_label = (label_value == EXTENSION_LABEL);
 		ND_PRINT(", exp %u", MPLS_EXP(label_entry));
 		if (MPLS_STACK(label_entry))
 			ND_PRINT(", [S]");

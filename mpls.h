@@ -39,3 +39,5 @@
 #define MPLS_EXP(x)	(((x) & EXP_MASK) >> EXP_SHIFT)
 #define MPLS_STACK(x)	(((x) & STACK_MASK) >> STACK_SHIFT)
 #define MPLS_TTL(x)	(((x) & TTL_MASK) >> TTL_SHIFT)
+
+#define	EXTENSION_LABEL	15
