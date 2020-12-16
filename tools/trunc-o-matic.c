@@ -36,6 +36,40 @@ errexit(char *err) {
 	exit(1);
 }
 
+/*
+ * We maintain a global buffer for output for the packet, so
+ * that we don't output duplicates, only when the output changes.
+ */
+#define STATIC_BUF_LEN 10000
+char outbuf[STATIC_BUF_LEN];
+char outbuf2[STATIC_BUF_LEN];
+char *buf[2] = { outbuf, outbuf2 };
+int curbuf = 0;
+
+char *curpos = outbuf;
+
+void
+newbuf() {
+    curbuf = 1 - curbuf;
+    curpos = buf[curbuf];
+}
+
+static int
+mysprintf(netdissect_options *ndo, const char *fmt, ...)
+{
+    va_list args;
+    int ret;
+    int remaining = STATIC_BUF_LEN - ( curpos - buf[curbuf] );
+
+    va_start(args, fmt);
+    ret = vsnprintf(curpos, remaining, fmt, args);
+    va_end(args);
+
+    curpos += ret;
+
+    return (ret);
+}
+
 int
 main( int argc, char **argv ) {
 	netdissect_options Ndo;
@@ -56,6 +90,7 @@ main( int argc, char **argv ) {
 	memset(ndo, 0, sizeof(*ndo));
 	ndo_set_function_pointers(ndo);
 	ndo->program_name = "trunc-o-matic";
+	ndo->ndo_printf = mysprintf;
 	/*
 	 * TODO: arg parsing
 	 * e.g., verbosity
@@ -76,11 +111,20 @@ main( int argc, char **argv ) {
 	    int caplen;
 	    packets_captured++;
 	    pretty_print_packet(ndo, hdr, pkt, packets_captured);
+	    printf("%s", buf[curbuf]);
 	    caplen = hdr->caplen;
 	    /* All possible truncation points */
 	    while (caplen > 1) {
 		hdr->caplen = --caplen;
+		newbuf();
 		pretty_print_packet(ndo, hdr, pkt, packets_captured);
+		if (strcmp(buf[0],buf[1])) {
+		    /*
+		     * Nicer would be to diff the two bufs and
+		     * show just what the difference is
+		     */
+		    printf("%s", buf[curbuf]);
+		}
 	    }
 	    ret = pcap_next_ex(p, &hdr, &pkt);
 	}
