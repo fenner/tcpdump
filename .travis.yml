@@ -165,6 +165,7 @@ script:
   - if [ "$CMAKE" = yes ]; then mkdir build; fi
   - if [ "$CMAKE" = yes ]; then cd build; fi
   - if [ "$CMAKE" = yes ]; then echo travis_fold:start:script.cmake; fi
+  - if [ "$CMAKE" = yes ]; then export PCAP_ROOT=/tmp; fi
   - if [ "$CMAKE" = yes ]; then cmake -DWITH_CRYPTO="$CRYPTO" -DCMAKE_PREFIX_PATH=/tmp -DCMAKE_INSTALL_PREFIX=/tmp ..; fi
   - if [ "$CMAKE" = yes ]; then echo -n travis_fold:end:script.cmake; fi
   - make -s CFLAGS=-Werror
@@ -189,5 +190,5 @@ script:
   - if [ "$CMAKE" = no ]; then echo '$ cat config.log'; echo travis_fold:start:script.cat_config_log; fi
   - if [ "$CMAKE" = no ]; then cat config.log; fi
   - if [ "$CMAKE" = no ]; then echo -n travis_fold:end:script.cat_config_log; fi
-  - if [ "$CMAKE" = yes ]; then for f in CMakeFiles/CMakeOutput.log CMakeFiles/CMakeError.log CMakeCache.txt; do echo "\$ cat $f"; echo travis_fold:start:script.cat_${f}; cat $f; echo travis_fold:end:script.cat_${f}; done; fi
+  - if [ "$CMAKE" = yes ]; then for f in CMakeFiles/CMakeOutput.log CMakeFiles/CMakeError.log CMakeCache.txt; do echo "\$ cat $f"; echo travis_fold:start:script.cat_${f/\//_}; cat $f; echo travis_fold:end:script.cat_${f/\//_}; done; fi
   - if [ "$TRAVIS_OS_NAME" = osx ]; then sleep 10; fi
