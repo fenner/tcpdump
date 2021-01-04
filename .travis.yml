@@ -93,19 +93,21 @@ env:
     # NOTE: REMOTE= is for the libpcap build, which is done with autotools
     # even if we're building tcpdump with CMake.
     # It's irrelevant if we're building tcpdump with the system libpcap.
-    - BUILD_LIBPCAP=no  CMAKE=no                 CRYPTO=no
-    - BUILD_LIBPCAP=no  CMAKE=no                 CRYPTO=yes
-    - BUILD_LIBPCAP=no  CMAKE=yes                CRYPTO=no
-    - BUILD_LIBPCAP=no  CMAKE=yes                CRYPTO=yes
-    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=no
-    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=yes
-    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=no
-    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=yes
-# The 'BUILD_LIBPCAP=yes CMAKE=yes' builds currently fail
-#   - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=no
-#   - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=yes
-#   - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=no
-#   - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=yes
+    #XXX Commenting out all the working builds, this needs to be reverted
+    # before merging to master
+    #XXX- BUILD_LIBPCAP=no  CMAKE=no                 CRYPTO=no
+    #XXX- BUILD_LIBPCAP=no  CMAKE=no                 CRYPTO=yes
+    #XXX- BUILD_LIBPCAP=no  CMAKE=yes                CRYPTO=no
+    #XXX- BUILD_LIBPCAP=no  CMAKE=yes                CRYPTO=yes
+    #XXX- BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=no
+    #XXX- BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=yes
+    #XXX- BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=no
+    #XXX- BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=yes
+# The 'BUILD_LIBPCAP=yes CMAKE=yes' builds currently fail, let's fix them
+    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=no
+    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=yes
+    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=no
+    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=yes
 
 addons:
   coverity_scan:
