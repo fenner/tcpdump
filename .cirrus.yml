@@ -102,13 +102,22 @@ coveralls_task:
     DEBIAN_FRONTEND: noninteractive
     MAKEFLAGS: -j 2
     CC: gcc
+    # Coveralls configuration
+    CI_NAME: cirrus-ci
+    CI_BRANCH: ${CIRRUS_BRANCH}
+    CI_PULL_REQUEST: ${CIRRUS_PR}
+    CI_BUILD_NUMBER: ${CIRRUS_BUILD_ID}
+    CI_BUILD_URL: https://cirrus-ci.com/build/${CIRRUS_BUILD_ID}
+    COVERALLS_PARALLEL: "true"
+    COVERALLS_FLAG_NAME: ${CIRRUS_TASK_NAME}
   script:
     - apt-get -qy update
     - apt-get -qy install git autoconf make gcc
     - apt-get -qy install flex bison libdbus-1-dev libbluetooth-dev libnl-genl-3-dev libibverbs-dev # for libpcap
     - apt-get -qy install libssl-dev libsmi2-dev libcap-ng-dev libpcap-dev
+    - apt-get -qy install python3-pip
     - apt list --installed 'lib*-dev'
-    - pip install --user cpp-coveralls
+    - pip install cpp-coveralls
     - git -C .. clone --depth ${CIRRUS_CLONE_DEPTH} --branch=master --quiet ${LIBPCAP_GIT}
     - (cd ../libpcap && REMOTE=no CMAKE=no ./build.sh)
 # Do not use build.sh because it runs "make clean" afterwards (does this break coveralls?).
