@@ -101,7 +101,7 @@ coveralls_task:
   env:
     DEBIAN_FRONTEND: noninteractive
     MAKEFLAGS: -j 2
-    CC=gcc
+    CC: gcc
   script:
     - apt-get -qy update
     - apt-get -qy install git autoconf make gcc
