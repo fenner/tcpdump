@@ -90,3 +90,30 @@ coverity_task:
     - apt-get -qy install git curl wget ruby rubygems ruby-json # for the coverity script
     - apt list --installed 'lib*-dev'
     - ./.ci-coverity-scan-build.sh
+
+coveralls_task:
+  name: Coveralls
+  only_if: $CIRRUS_BRANCH != 'coverity_scan'
+  container:
+    cpu: 2
+    memory: 1G
+    image: ubuntu:20.04
+  env:
+    DEBIAN_FRONTEND: noninteractive
+    MAKEFLAGS: -j 2
+    CC=gcc
+  script:
+    - apt-get -qy update
+    - apt-get -qy install git autoconf make gcc
+    - apt-get -qy install flex bison libdbus-1-dev libbluetooth-dev libnl-genl-3-dev libibverbs-dev # for libpcap
+    - apt-get -qy install libssl-dev libsmi2-dev libcap-ng-dev libpcap-dev
+    - apt list --installed 'lib*-dev'
+    - pip install --user cpp-coveralls
+    - git -C .. clone --depth ${CIRRUS_CLONE_DEPTH} --branch=master --quiet ${LIBPCAP_GIT}
+    - (cd ../libpcap && REMOTE=no CMAKE=no ./build.sh)
+# Do not use build.sh because it runs "make clean" afterwards (does this break coveralls?).
+    - touch .devel configure
+    - CFLAGS=--coverage LDFLAGS=--coverage ./configure --with-crypto=yes --enable-smb=yes
+    - make -s CFLAGS=-Werror
+    - make check
+    - coveralls --gcov-options '\-lp'
