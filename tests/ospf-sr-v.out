@@ -15,8 +15,8 @@
 	  Advertising Router 192.168.0.4, seq 0x8000001e, age 1s, length 28
 	    Area Local Opaque LSA (10), Opaque-Type Extended Prefix LSA (7), Opaque-ID 0
 	    Options: [none]
-	      Extended Prefix Range TLV (2), length: 24, value: 
-		IPv4 prefix:     192.168.0.0/32, Range size: 1, Flags [none]
+	    Extended Prefix Range TLV (2), length: 24, value: 
+	      IPv4 prefix:     192.168.0.0/32, Range size: 1, Flags [none]
 		Prefix-SID subTLV (2), length: 8, value: 
 		  Index: 4, MT-ID: 0, Algorithm: 0, Flags [none]
 	  LSA #3
