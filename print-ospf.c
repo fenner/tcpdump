@@ -704,8 +704,6 @@ ospf_print_ri_lsa_sid_label_range_tlv(netdissect_options *ndo, const uint8_t *tp
 	tlv_length-=subtlv_length;
     }
     return 0;
-trunc:
-    return -1;
 }
 
 static int
@@ -765,8 +763,6 @@ ospf_print_ep_lsa_extd_prefix_tlv(netdissect_options *ndo, const uint8_t *tptr,
 	tlv_length-=subtlv_length;
     }
     return 0;
-trunc:
-    return -1;
 }
 
 static int
