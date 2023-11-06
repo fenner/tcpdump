@@ -655,13 +655,13 @@ ospf_print_tos_metrics(netdissect_options *ndo,
 }
 
 static int
-ospf_print_ri_lsa_sid_label_range_tlv(netdissect_options *ndo, const uint8_t *tptr, u_int tlv_length)
+ospf_print_ri_lsa_sid_label_range_tlv(netdissect_options *ndo, const uint8_t *tptr,
+				      u_int tlv_length)
 {
     u_int subtlv_type, subtlv_length;
 
     while (tlv_length >= 4) {
 
-	ND_TCHECK_4(tptr);
 	subtlv_type = GET_BE_U_2(tptr);
 	subtlv_length = GET_BE_U_2(tptr+2);
 	tptr+=4;
@@ -669,6 +669,7 @@ ospf_print_ri_lsa_sid_label_range_tlv(netdissect_options *ndo, const uint8_t *tp
 
 	/* Infinite loop protection. */
 	if (subtlv_type == 0 || subtlv_length == 0) {
+	    nd_print_invalid(ndo);
 	    return -1;
 	}
 
@@ -708,13 +709,13 @@ trunc:
 }
 
 static int
-ospf_print_ep_lsa_extd_prefix_tlv(netdissect_options *ndo, const uint8_t *tptr, u_int tlv_length)
+ospf_print_ep_lsa_extd_prefix_tlv(netdissect_options *ndo, const uint8_t *tptr,
+				  u_int tlv_length)
 {
     u_int subtlv_type, subtlv_length;
     uint8_t flags, mt_id, algo;
 
     while (tlv_length >= 4) {
-	ND_TCHECK_4(tptr);
 	subtlv_type = GET_BE_U_2(tptr);
 	subtlv_length = GET_BE_U_2(tptr+2);
 	tptr+=4;
@@ -722,6 +723,7 @@ ospf_print_ep_lsa_extd_prefix_tlv(netdissect_options *ndo, const uint8_t *tptr, 
 
 	/* Infinite loop protection. */
 	if (subtlv_type == 0 || subtlv_length == 0) {
+	    nd_print_invalid(ndo);
 	    return -1;
 	}
 
@@ -787,7 +789,7 @@ ospf_ep_lsa_print(netdissect_options *ndo, const uint8_t *tptr, u_int lsa_length
 	    return -1;
 	}
 
-	ND_PRINT("\n\t      %s TLV (%u), length: %u, value: ",
+	ND_PRINT("\n\t    %s TLV (%u), length: %u, value: ",
 		 tok2str(lsa_opaque_ep_tlv_values,"unknown",tlv_type),
 		 tlv_type,
 		 tlv_length);
@@ -801,18 +803,17 @@ ospf_ep_lsa_print(netdissect_options *ndo, const uint8_t *tptr, u_int lsa_length
 	    flags = GET_U_1(tptr+3);
 
 	    if (af != 0) {
-		ND_PRINT("\n\t\tBogus AF %u", af);
+		ND_PRINT("\n\t      Bogus AF %u", af);
 		return -1;
 	    }
 
 	    if (prefix_length > 32) {
-		ND_PRINT("\n\t\tIPv4 prefix: bad bit length %u", prefix_length);
+		ND_PRINT("\n\t      IPv4 prefix: bad bit length %u", prefix_length);
 		return -1;
 	    }
 
-	    ND_TCHECK_4(tptr+8);
-	    ND_PRINT("\n\t\tIPv4 prefix: %15s/%u, Route Type: %s, Flags [%s]",
-		     ipaddr_string(ndo, tptr+4), prefix_length,
+	    ND_PRINT("\n\t      IPv4 prefix: %15s/%u, Route Type: %s, Flags [%s]",
+		     GET_IPADDR_STRING(tptr+4), prefix_length,
 		     tok2str(lsa_opaque_ep_route_type_values, "Unknown", route_type),
 		     bittok2str(ep_tlv_flag_values, "none", flags));
 
@@ -832,18 +833,17 @@ ospf_ep_lsa_print(netdissect_options *ndo, const uint8_t *tptr, u_int lsa_length
 	    flags = GET_U_1(tptr+4);
 
 	    if (af != 0) {
-		ND_PRINT("\n\t\tBogus AF %u", af);
+		ND_PRINT("\n\t      Bogus AF %u", af);
 		return -1;
 	    }
 
 	    if (prefix_length > 32) {
-		ND_PRINT("\n\t\tIPv4 prefix: bad bit length %u", prefix_length);
+		ND_PRINT("\n\t      IPv4 prefix: bad bit length %u", prefix_length);
 		return -1;
 	    }
 
-	    ND_TCHECK_4(tptr+8);
-	    ND_PRINT("\n\t\tIPv4 prefix: %15s/%u, Range size: %u, Flags [%s]",
-		     ipaddr_string(ndo, tptr+8), prefix_length,
+	    ND_PRINT("\n\t      IPv4 prefix: %15s/%u, Range size: %u, Flags [%s]",
+		     GET_IPADDR_STRING(tptr+8), prefix_length,
 		     range_size,
 		     bittok2str(ep_tlv_flag_values, "none", flags));
 
