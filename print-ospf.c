@@ -774,7 +774,6 @@ ospf_ep_lsa_print(netdissect_options *ndo, const uint8_t *tptr, u_int lsa_length
 
     while (lsa_length >= 4) {
 
-	ND_TCHECK_4(tptr);
 	tlv_type = GET_BE_U_2(tptr);
 	tlv_length = GET_BE_U_2(tptr+2);
 	tptr+=4;
@@ -792,7 +791,6 @@ ospf_ep_lsa_print(netdissect_options *ndo, const uint8_t *tptr, u_int lsa_length
 
 	switch (tlv_type) {
 	case LS_OPAQUE_EP_EXTD_PREFIX_TLV:
-	    ND_TCHECK_8(tptr);
 	    prefix_length = GET_U_1(tptr+1);
 	    af = GET_U_1(tptr+2);
 	    route_type = GET_U_1(tptr);
@@ -815,14 +813,13 @@ ospf_ep_lsa_print(netdissect_options *ndo, const uint8_t *tptr, u_int lsa_length
 
 	    /* subTLVs present ? */
 	    if (tlv_length > 12) {
-		if (ospf_print_ep_lsa_extd_prefix_tlv(ndo, tptr+12, tlv_length-12) == -1) {
+		if (ospf_print_ep_lsa_extd_prefix_tlv(ndo, tptr+8, tlv_length-8) == -1) {
 		    return -1;
 		}
 	    }
 	    break;
 
 	case LS_OPAQUE_EP_EXTD_PREFIX_RANGE_TLV:
-	    ND_TCHECK_8(tptr);
 	    prefix_length = GET_U_1(tptr);
 	    af = GET_U_1(tptr+1);
 	    range_size = GET_BE_U_2(tptr+2);
@@ -845,7 +842,7 @@ ospf_ep_lsa_print(netdissect_options *ndo, const uint8_t *tptr, u_int lsa_length
 
 	    /* subTLVs present ? */
 	    if (tlv_length > 12) {
-		if (ospf_print_ep_lsa_extd_prefix_tlv(ndo, tptr+12, tlv_length-12) == -1) {
+		if (ospf_print_ep_lsa_extd_prefix_tlv(ndo, tptr+8, tlv_length-8) == -1) {
 		    return -1;
 		}
 	    }
@@ -866,8 +863,6 @@ ospf_ep_lsa_print(netdissect_options *ndo, const uint8_t *tptr, u_int lsa_length
 	lsa_length-=tlv_length;
     }
     return 0;
-trunc:
-    return -1;
 }
 
 /*
