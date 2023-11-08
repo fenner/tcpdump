@@ -842,7 +842,7 @@ ospf_ep_lsa_print(netdissect_options *ndo, const uint8_t *tptr, u_int lsa_length
 
 	    /* subTLVs present ? */
 	    if (tlv_length > 12) {
-		if (ospf_print_ep_lsa_extd_prefix_tlv(ndo, tptr+8, tlv_length-8) == -1) {
+		if (ospf_print_ep_lsa_extd_prefix_tlv(ndo, tptr+12, tlv_length-12) == -1) {
 		    return -1;
 		}
 	    }
